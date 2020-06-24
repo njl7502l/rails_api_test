@@ -35,12 +35,14 @@ class AddDeviseToPosts < ActiveRecord::Migration[6.0]
 
       # Uncomment below if timestamps were not included in your original model.
       # t.timestamps null: false
+      t.string :jti, null: false
     end
 
     add_index :posts, :email,                unique: true
     add_index :posts, :reset_password_token, unique: true
     # add_index :posts, :confirmation_token,   unique: true
     # add_index :posts, :unlock_token,         unique: true
+    add_index :posts, :jti, unique: true
   end
 
   def self.down
